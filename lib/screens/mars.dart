@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -56,17 +57,16 @@ _marsweather(BuildContext) {
   );
 }
 
-Future<http.Response> fetchWeather() {
-  return http.get(Uri.https('https://api.nasa.gov',
-      '/insight_weather/?api_key=hneSVQ0R1zLCEF3zpWzCecc8L9cFMzvtB8WPM7b6&feedtype=json&ver=1.0'));
+Future<void> fetchWeather() async {
+  await http.get(Uri.parse('https://api.nasa.gov/insight_weather/?api_key=hneSVQ0R1zLCEF3zpWzCecc8L9cFMzvtB8WPM7b6&feedtype=json&ver=1.0'))
+      .then((response) async => print(await response));
 }
 
 class _MarswState extends State<Marsw> {
   @override
-  var url = Uri.parse(
-      'https://api.nasa.gov/insight_weather/?api_key=hneSVQ0R1zLCEF3zpWzCecc8L9cFMzvtB8WPM7b6&feedtype=json&ver=1.0');
 
   Widget build(BuildContext context) {
+    fetchWeather();
     return Scaffold(
       body: SafeArea(
           child: Container(
@@ -77,7 +77,7 @@ class _MarswState extends State<Marsw> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Phobos Forcast",
+                  "Phobos Forecast",
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 Icon(Icons.cloud_circle_outlined)
