@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:simple_animations/simple_animations.dart';
 
@@ -55,8 +56,16 @@ _marsweather(BuildContext) {
   );
 }
 
+Future<http.Response> fetchWeather() {
+  return http.get(Uri.https('https://api.nasa.gov',
+      '/insight_weather/?api_key=hneSVQ0R1zLCEF3zpWzCecc8L9cFMzvtB8WPM7b6&feedtype=json&ver=1.0'));
+}
+
 class _MarswState extends State<Marsw> {
   @override
+  var url = Uri.parse(
+      'https://api.nasa.gov/insight_weather/?api_key=hneSVQ0R1zLCEF3zpWzCecc8L9cFMzvtB8WPM7b6&feedtype=json&ver=1.0');
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
