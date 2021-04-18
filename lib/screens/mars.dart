@@ -17,13 +17,11 @@ _marsweather(BuildContext) {
       color: Colors.orange.shade900,
     ),
     child: Text(
-      "Weather on Mars, 120 degrees F",
+      "Weather on Mars \n 120 degrees F",
       textAlign: TextAlign.center,
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(
-        color: Colors.white,
-        fontFamily: 
-      ),
+      style: GoogleFonts.getFont('Raleway',
+          color: Colors.white, fontWeight: FontWeight.w900, fontSize: 30),
     ),
   );
 }
