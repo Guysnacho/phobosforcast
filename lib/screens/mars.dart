@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Marsw extends StatefulWidget {
   //marsw({Key key}) : super(key: key);
@@ -7,13 +8,33 @@ class Marsw extends StatefulWidget {
   _MarswState createState() => _MarswState();
 }
 
+_marsweather(BuildContext) {
+  return Container(
+    width: 420,
+    height: 380,
+    decoration: BoxDecoration(
+      shape: BoxShape.rectangle,
+      color: Colors.orange.shade900,
+    ),
+    child: Text(
+      "Weather on Mars, 120 degrees F",
+      textAlign: TextAlign.center,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        color: Colors.white,
+        fontFamily: 
+      ),
+    ),
+  );
+}
+
 class _MarswState extends State<Marsw> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.only(top: 20, right: 20, left: 20),
         child: ListView(
           children: [
             Row(
@@ -29,7 +50,9 @@ class _MarswState extends State<Marsw> {
             SizedBox(
               height: 5,
             ),
-            Container()
+            Row(
+              children: <Widget>[_marsweather(context)],
+            )
           ],
         ),
       )),
